@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checklist Virtual</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: white;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .section { margin-top: 24px; }
+    .section-title {
+      font-weight: 700;
+      font-size: 14px;
+      color: #1565c0;
+      background: #e3f2fd;
+      padding: 8px 12px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 12px;
+      color: #333;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 8px;
+      font-size: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .form-group textarea { resize: vertical; }
+    .tasks-column {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 8px 0;
+    }
+    .task-item label {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    button {
+      display: block;
+      margin: 30px auto 0;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(to right, #42a5f5, #1e88e5);
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1565c0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="checklist">
+    <h1>📋 Check List Digital</h1>
+
+    <div class="section">
+      <div class="section-title">👩‍💼 Vendedor(a)</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Nome do Vendedor(a):</label>
+          <input id="vendedor" type="text">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🧾 Dados do Servidor</div>
+      <div class="form-grid">
+        <div class="form-group"><label>Nome Cliente:</label><input id="cliente" type="text"></div>
+        <div class="form-group"><label>CPF:</label><input id="cpf" type="text"></div>
+        <div class="form-group"><label>Órgão:</label><input id="orgao" type="text"></div>
+        <div class="form-group"><label>Matrícula:</label><input id="matricula" type="text"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🏡 Endereço</div>
+      <div class="form-grid">
+        <div class="form-group"><label>CEP:</label><input id="cep" type="text"></div>
+        <div class="form-group"><label>Rua/Número:</label><input id="rua" type="text"></div>
+        <div class="form-group"><label>Bairro:</label><input id="bairro" type="text"></div>
+        <div class="form-group"><label>Cidade:</label><input id="cidade" type="text"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">👨‍👩‍👧‍👦 Dados Pessoais</div>
+      <div class="form-grid">
+        <div class="form-group"><label>Nome da Mãe:</label><input id="mae" type="text"></div>
+        <div class="form-group"><label>Nome do Pai:</label><input id="pai" type="text"></div>
+        <div class="form-group"><label>RG:</label><input id="rg" type="text"></div>
+        <div class="form-group"><label>Data de Emissão RG:</label><input id="rg_emissao" type="text"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🏦 Dados Bancários</div>
+      <div class="form-grid">
+        <div class="form-group"><label>Banco:</label><input id="banco" type="text"></div>
+        <div class="form-group"><label>Agência:</label><input id="agencia" type="text"></div>
+        <div class="form-group"><label>Conta:</label><input id="conta" type="text"></div>
+        <div class="form-group"><label>Tipo de Conta:</label><input id="tipo_conta" type="text"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📊 Simulação Ofertada</div>
+      <div class="form-grid">
+        <div class="form-group"><label>Banco:</label><input id="simul_banco" type="text"></div>
+        <div class="form-group"><label>Valor Liberado:</label><input id="valor" type="text"></div>
+        <div class="form-group"><label>Parcela:</label><input id="parcela" type="text"></div>
+        <div class="form-group"><label>Taxa:</label><input id="taxa" type="text"></div>
+        <div class="form-group"><label>Prazo:</label><input id="prazo" type="text"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📞 Contato</div>
+      <div class="form-grid">
+        <div class="form-group"><label>Telefone:</label><input id="telefone" type="text"></div>
+        <div class="form-group"><label>Valor da Dívida:</label><input id="divida" type="text"></div>
+        <div class="form-group"><label>Data de Nascimento:</label><input id="nascimento" type="text"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📝 Observações e Tarefas</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Observações:</label>
+          <textarea id="obs" rows="8"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Tarefas:</label>
+          <div class="tasks-column" id="tarefas">
+            <div class="task-item"><label><input type="checkbox" value="Documentos Recebidos"> Documentos Recebidos</label></div>
+            <div class="task-item"><label><input type="checkbox" value="Dados Conferidos"> Dados Conferidos</label></div>
+            <div class="task-item"><label><input type="checkbox" value="Proposta Digitada"> Proposta Digitada</label></div>
+            <div class="task-item"><label><input type="checkbox" value="Primeiro link enviado"> Primeiro link enviado</label></div>
+            <div class="task-item"><label><input type="checkbox" value="Video chamada feita"> Video chamada feita</label></div>
+            <div class="task-item"><label><input type="checkbox" value="Auditoria do boleto feita"> Auditoria do boleto feita</label></div>
+            <div class="task-item"><label><input type="checkbox" value="Boleto pago"> Boleto pago</label></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button onclick="visualizar()">📋 Visualizar Check List</button>
+
+  <script>
+    function visualizar() {
+      const dados = {
+        vendedor: document.getElementById('vendedor').value,
+        cliente: document.getElementById('cliente').value,
+        cpf: document.getElementById('cpf').value,
+        orgao: document.getElementById('orgao').value,
+        matricula: document.getElementById('matricula').value,
+        cep: document.getElementById('cep').value,
+        rua: document.getElementById('rua').value,
+        bairro: document.getElementById('bairro').value,
+        cidade: document.getElementById('cidade').value,
+        mae: document.getElementById('mae').value,
+        pai: document.getElementById('pai').value,
+        rg: document.getElementById('rg').value,
+        rg_emissao: document.getElementById('rg_emissao').value,
+        banco: document.getElementById('banco').value,
+        agencia: document.getElementById('agencia').value,
+        conta: document.getElementById('conta').value,
+        tipo_conta: document.getElementById('tipo_conta').value,
+        simul_banco: document.getElementById('simul_banco').value,
+        valor: document.getElementById('valor').value,
+        parcela: document.getElementById('parcela').value,
+        taxa: document.getElementById('taxa').value,
+        prazo: document.getElementById('prazo').value,
+        telefone: document.getElementById('telefone').value,
+        divida: document.getElementById('divida').value,
+        nascimento: document.getElementById('nascimento').value,
+        obs: document.getElementById('obs').value,
+        tarefas: Array.from(document.querySelectorAll('#tarefas input:checked')).map(c => c.value)
+      };
+      localStorage.setItem('checklist', JSON.stringify(dados));
+      window.open('visualizar.html', '_blank');
+    }
+  </script>
+</body>
+</html>
